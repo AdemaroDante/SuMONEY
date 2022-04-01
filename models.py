@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 class Articles(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    title = db.Column(db.String(50), nullable = False)
+    name = db.Column(db.String(50), nullable = False)
     subtitle = db.Column(db.String(65), nullable = False)
     type = db.Column(db.String())
     content = db.Column(db.Text())

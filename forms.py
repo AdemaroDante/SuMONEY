@@ -18,7 +18,7 @@ class LogIn(FlaskForm):
     submit = SubmitField('Submit')
 
 class AddArticle(FlaskForm):
-    title = StringField("Tytuł artykułu", validators=[DataRequired()])
+    name = StringField("Tytuł artykułu", validators=[DataRequired()])
     subtitle = StringField("Podtytuł artykułu", validators=[DataRequired()])
     type = StringField("Typ", validators=[DataRequired()])
     content = CKEditorField('Treść artykułu', validators=[DataRequired()])

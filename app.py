@@ -28,17 +28,31 @@ ckeditor = CKEditor(app)
 # Main page 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('index.html')
+    articles = Articles.query.all()
+    latest = 0
+    for articles in articles:
+        latest += 1
+
+    class banner():
+        bg_ban1 = Articles.query.get(latest)
+        bg_ban2 = Articles.query.get(latest-1)
+        sm_ban3 = Articles.query.get(latest-2)
+        sm_ban4 = Articles.query.get(latest-3)
+        sm_ban5 = Articles.query.get(latest-4)
+        sm_ban6 = Articles.query.get(latest-5)
+
+    return render_template('index.html', banner = banner, latest = latest)
 
 # List of articles
 @app.route('/artykuły', methods=['GET'])
 def articles():
-    return render_template('articles.html')
+    article = Articles.query.all()
+    return render_template('articles.html', article=article)
 
 # Single article page
-@app.route('/artykuł/<article_title>', methods = ['GET', 'POST'])
-def article(article_title):
-    article = Articles.query.filter_by(title=article_title).first()
+@app.route('/artykuł/<article_name>', methods = ['GET', 'POST'])
+def article(article_name):
+    article = Articles.query.filter_by(name=article_name).first()
     if not article:
         return 'Not found..!', 404
     return render_template('article.html', article = article)
@@ -99,18 +113,18 @@ def admin_add_article():
     form = AddArticle()
 
     if form.validate_on_submit():
-        title = form.title.data
+        name = form.name.data
         subtitle = form.subtitle.data
         type = form.type.data
         content = form.content.data
         added_by = str(f"{current_user.firstname} {current_user.lastname}")
 
-        new_article = Articles(title=title, subtitle=subtitle, type=type, content=content, added_by=added_by)
+        new_article = Articles(name=name, subtitle=subtitle, type=type, content=content, added_by=added_by)
 
         db.session.add(new_article)
         db.session.commit()
 
-        form.title.data, form.subtitle.data, form.type.data, form.content.data, current_user.username = '', '', '', '', ''
+        form.name.data, form.subtitle.data, form.type.data, form.content.data, current_user.username = '', '', '', '', ''
 
         flash('Dodano artykuł!')
         
@@ -125,7 +139,7 @@ def admin_edit_article(id):
     form = AddArticle()
 
     if form.validate_on_submit():
-        editing_article.title = form.title.data 
+        editing_article.name = form.name.data 
         editing_article.subtitle = form.subtitle.data
         editing_article.type = form.type.data
         editing_article.content = form.content.data

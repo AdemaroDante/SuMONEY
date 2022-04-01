@@ -1,3 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
+<link rel="stylesheet" href="static/styles/index.css">
+<div class="articles-container" style="margin: 100px 0 100px 0;">
+    {% if article %}
+        <h5>Artykuły</h5>
+        {% for article in article %}
+                <a href="{{ url_for('article', article_name=article.name )}}">
+                    <div class="big-banner banner reveal" style="background-image: url(static/img/articles/{{ article.id }}.jpg)">
+                        <div class="bg-lin-shd">
+                        <h6>{{ article.name }}</h6>
+                        <h7>{{ article.subtitle }}</h7>
+                        </div>
+                        <div class="highlight"></div>
+                    </div>
+                </a>
+        {% endfor %}
+    {% else %}
+        <h5>Nie ma jeszcze artykułów </h5>
+    {% endif %}
+</div>
 {% endblock %}

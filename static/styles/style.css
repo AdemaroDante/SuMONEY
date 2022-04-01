@@ -218,7 +218,7 @@ footer>.ft-cont>.block>a>i{
 }
 
 .reveal{
-  transform: translateY(300px);
+  transform: translateY(100px);
   opacity: 0;
   transition: .8s;
 }
