@@ -47,6 +47,10 @@ h5{
     background-repeat: no-repeat; 
     background-size: cover;
     margin: 20px;
+    transition: all .5s;
+}
+*{
+    list-style-type: none;
 }
 .articles-container>a>.small-banner{
     width: 530px;
@@ -57,6 +61,7 @@ h5{
     background-repeat: no-repeat; 
     background-size: cover;
     margin: 20px 10px 20px 10px;
+    transition: all .5s;
 }
 .articles-container>a>.big-banner,
 .articles-container>a>.small-banner{
@@ -82,15 +87,16 @@ h5{
 .articles-container>a>.big-banner>.bg-lin-shd>h6,
 .articles-container>a>.small-banner>.bg-lin-shd>h6{
     color: #fefefe;
+    transition: all .5s;
 }
-.articles-container>a>.big-banner:hover>.bg-lin-shd>h6,
-.articles-container>a>.small-banner:hover>.bg-lin-shd>h6{
-    transition: .5s;
-    transform: translateY(-50px);
+.articles-container>a>.big-banner:hover,
+.articles-container>a>.small-banner:hover{
+    height: 400px;
 }
 .articles-container>a>.big-banner>.bg-lin-shd>h7{
     color: #fefefe;
     font-weight: 300;
+    transition: all .5s;
 }
 a>.primary-button{
     margin: 100px auto 100px auto;

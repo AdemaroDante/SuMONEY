@@ -1,3 +1,4 @@
+from re import search
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, EqualTo, Length
@@ -23,4 +24,8 @@ class AddArticle(FlaskForm):
     type = StringField("Typ", validators=[DataRequired()])
     content = CKEditorField('Treść artykułu', validators=[DataRequired()])
     submit = SubmitField('Dodaj')
+
+class SearchArticle(FlaskForm):
+    name = StringField("Szukaj po tytule artykułu...")
+    submit = SubmitField('Szukaj')
     
