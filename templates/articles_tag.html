@@ -2,26 +2,7 @@
 {% block content %}
 <link rel="stylesheet" href="/static/styles/banners.css">
 <link rel="stylesheet" href="/static/styles/articles.css">
-<h5>Artykuły</h5>
-<form method="POST" action="{{ url_for('articles')}}">
-    {{ form.hidden_tag() }}
-    {{ form.name(type="search", placeholder="Szukaj po tytule...", class="text-input") }}
-    {{ form.submit(class="button small primary", value="Szukaj") }}
-</form>
-<div class="types-area">
-    <a href="{{ url_for('articles') }}/kategoria=Pieniądze w praktyce">
-        <div class="button small primary">Pieniądze w praktyce</div>
-    </a>
-    <a href="{{ url_for('articles') }}/kategoria=Ważne pojęcia">
-        <div class="button small primary">Ważne pojęcia</div>
-    </a>
-    <a href="{{ url_for('articles') }}/kategoria=Historia pieniądza">
-        <div class="button small primary">Historia pieniądza</div>
-    </a>
-    <a href="{{ url_for('articles') }}/kategoria=Ciekawostki">
-        <div class="button small primary">Ciekawostki</div>
-    </a>
-</div>
+<h5>Artykuły z kategorii: <i class="highlight-text">{{ type }}</i></h5>
 <div class="articles-container" style="margin: 100px 0 100px 0;">
     {% if article %}
         {% for article in article %}

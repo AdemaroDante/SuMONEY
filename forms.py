@@ -27,5 +27,5 @@ class AddArticle(FlaskForm):
 
 class SearchArticle(FlaskForm):
     name = StringField("Szukaj po tytule artykułu...")
-    submit = SubmitField('Szukaj')
+    submit = SubmitField()
     

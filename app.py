@@ -1,16 +1,15 @@
-from wsgiref import validate
-from flask import Flask, render_template, flash, url_for, redirect
+from db import db, db_init
+from flask import Flask, flash, redirect, render_template, url_for
+from flask_ckeditor import CKEditor, CKEditorField
+from flask_login import LoginManager, current_user, login_manager, login_required, login_user, logout_user
 from flask_sqlalchemy import SQLAlchemy
-from db import db_init, db
-from models import Articles, Users
 from flask_wtf import FlaskForm
+from forms import AddArticle, LogIn, SearchArticle, SignIn
+from models import Articles, Users
+from werkzeug.security import check_password_hash, generate_password_hash
+
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
-from forms import LogIn, SignIn, AddArticle, SearchArticle
-from flask_login import login_user, LoginManager, login_manager, login_required, logout_user, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_ckeditor import CKEditor, CKEditorField
-import difflib
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "SkuMONEY"
@@ -50,14 +49,18 @@ def home():
 def articles():
     form = SearchArticle()
     article = Articles.query.all()
-
     if form.validate_on_submit():
         article = Articles.query.filter(Articles.name.like(f"%{form.name.data}%")).all()
-
         if form.name.data == '':
             article = Articles.query.all()
-        
     return render_template('articles.html', article=article, form=form)
+
+# List of articles with type
+@app.route('/artykuły/kategoria=<type>', methods=['GET', 'POST'])
+def type_articles(type):
+    article = Articles.query.filter(Articles.type == type).all()
+
+    return render_template('articles_tag.html', article=article, type=type)
 
 # Single article page
 @app.route('/artykuł/<article_name>', methods = ['GET', 'POST'])
