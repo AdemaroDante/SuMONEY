@@ -1,0 +1,49 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="container-fluid px-4">
+    <div class="card mb-4" style="margin-top: 50px">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Wszystkie dodane artykuły
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Tytuł</th>
+                        <th>Podtytuł</th>
+                        <th>Klasyfikacja</th>
+                        <th>Dodane przez</th>
+                        <th>Data dodania</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Tytuł</th>
+                        <th>Podtytuł</th>
+                        <th>Klasyfikacja</th>
+                        <th>Dodane przez</th>
+                        <th>Data dodania</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for art in article %}
+                        <tr>
+                            <td><a href="{{url_for('article', article_name=art.name)}}">{{ art.name }}</a></td>
+                            <td>{{ art.subtitle }}</td>
+                            <td>{{ art.type }}</td>
+                            <td>{{ art.added_by }}</td>
+                            <td>{{ art.date }}</td>
+                            <td><a href="{{ url_for('admin_delete_article', id=art.id)}}">Usuń</a></td>
+                            <td><a href="{{ url_for('admin_edit_article', id=art.id)}}">Edytuj</a></td>
+                        </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

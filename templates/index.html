@@ -20,7 +20,7 @@
   <div class="articles-container reveal">
 
     <a href="{{ url_for('article', article_name=banner.bg_ban1.name )}}">
-      <div class="big-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.bg_ban1.id }}.jpg)">
+      <div class="big-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.bg_ban1.img }})">
         <div class="bg-lin-shd">
           <h6>{{ banner.bg_ban1.name }}</h6>
           <h7>{{ banner.bg_ban1.subtitle }}</h7>
@@ -31,7 +31,7 @@
 
     {% if latest > 1 %}
       <a href="{{ url_for('article', article_name=banner.bg_ban2.name )}}">
-        <div class="big-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.bg_ban2.id }}.jpg)">
+        <div class="big-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.bg_ban2.img }})">
           <div class="bg-lin-shd">
             <h6>{{ banner.bg_ban2.name }}</h6>
             <h7>{{ banner.bg_ban2.subtitle }}</h7>
@@ -43,7 +43,7 @@
     
     {% if latest > 2 %}
       <a href="{{ url_for('article', article_name='tem') }}">
-        <div class="small-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.sm_ban3.id }}.jpg)">
+        <div class="small-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.sm_ban3.img }})">
           <div class="bg-lin-shd">
             <h6>{{ banner.sm_ban3.name }}</h6>
           </div>
@@ -54,7 +54,7 @@
 
     {% if latest > 3 %}
     <a href="{{ url_for('article', article_name='tem') }}">
-      <div class="small-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.sm_ban4.id }}.jpg)">
+      <div class="small-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.sm_ban4.img }})">
         <div class="bg-lin-shd">
           <h6>{{ banner.sm_ban4.name }}</h6>
         </div>
@@ -65,7 +65,7 @@
 
     {% if latest > 4 %}
     <a href="{{ url_for('article', article_name='tem') }}">
-      <div class="small-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.sm_ban5.id }}.jpg)">
+      <div class="small-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.sm_ban5.img }})">
         <div class="bg-lin-shd">
           <h6>{{ banner.sm_ban5.name }}</h6>
         </div>
@@ -76,7 +76,7 @@
 
     {% if latest > 5 %}
     <a href="{{ url_for('article', article_name='tem') }}">
-      <div class="small-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.sm_ban6.id }}.jpg)">
+      <div class="small-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.sm_ban6.img }})">
         <div class="bg-lin-shd">
           <h6>{{ banner.sm_ban6.name }}</h6>
         </div>

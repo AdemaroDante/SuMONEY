@@ -13,7 +13,8 @@ class Articles(db.Model):
     type = db.Column(db.String())
     content = db.Column(db.Text())
     added_by = db.Column(db.String(35), nullable = False)
-    date = db.Column(db.DateTime, default=datetime.datetime.now())
+    img = db.Column(db.String())
+    date = db.Column(db.DateTime)
 
     # Create a string
     def __repr__(self):
@@ -21,10 +22,8 @@ class Articles(db.Model):
 
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.String(35), nullable = False)
     firstname = db.Column(db.String(100), nullable = False)
     lastname = db.Column(db.String(100), nullable = False)
-    description = db.Column(db.String(1000), nullable = True)
     mail = db.Column(db.String(100), nullable = False, unique = True) # Mail verification in BETA ver.
     password_hash = db.Column(db.String(128), nullable = False)
 

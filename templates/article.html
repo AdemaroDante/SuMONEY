@@ -1,3 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="article-content">
+    <h2>{{ article.name }}</h2>
+    <h4>{{ article.subtitle }}</h4>
+    {{ article.content|safe }}
+</div>
 {% endblock %}

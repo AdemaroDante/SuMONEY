@@ -1,11 +1,10 @@
-from re import search
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField
+from flask_wtf.file import FileField
+from wtforms import StringField, SubmitField, PasswordField, SelectField
 from wtforms.validators import DataRequired, EqualTo, Length
 from flask_ckeditor import CKEditorField
 
 class SignIn(FlaskForm):
-    username = StringField("Username", validators=[DataRequired()])
     firstname = StringField("Firstname", validators=[DataRequired()])
     lastname = StringField("Lastname", validators=[DataRequired()])
     mail = StringField("E-mail", validators=[DataRequired()])
@@ -14,15 +13,17 @@ class SignIn(FlaskForm):
     submit = SubmitField('Submit')
 
 class LogIn(FlaskForm):
-    username = StringField("Username", validators=[DataRequired()])
+    mail = StringField("Mail", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
     submit = SubmitField('Submit')
 
+art_types = [('Pieniądze w praktyce', 'Pieniądze w praktyce'), ('Ważne pojęcia', 'Ważne pojęcia'), ('Historia pieniądza', 'Historia pieniądza'), ('Ciekawostki', 'Ciekawostki')]
 class AddArticle(FlaskForm):
     name = StringField("Tytuł artykułu", validators=[DataRequired()])
     subtitle = StringField("Podtytuł artykułu", validators=[DataRequired()])
-    type = StringField("Typ", validators=[DataRequired()])
+    type = SelectField(u'Klasyfikacja', choices=art_types)
     content = CKEditorField('Treść artykułu', validators=[DataRequired()])
+    img = FileField('')
     submit = SubmitField('Dodaj')
 
 class SearchArticle(FlaskForm):

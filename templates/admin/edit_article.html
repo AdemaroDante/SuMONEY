@@ -1,0 +1,36 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="container-fluid px-4">
+    <div class="card mb-4" style="margin-top: 50px">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Edytuj artykuł <strong>{{ editing_article.name}}</strong>
+        </div>
+        <div class="card-body">
+
+            <form action="/admin/artykuły/{{ url_ }}" method="post" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Tytuł</span>
+                    {{ form.name(type="text", class="form-control", placeholder="Tytuł", value=editing_article.name) }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Podtytuł</span>
+                    {{ form.subtitle(type="text", class="form-control", placeholder="Podtytuł", value=editing_article.subtitle) }}
+                </div>
+                {{ form.content() }}
+                {{ form.type(class="form-select", style="margin-top: 15px", value=editing_article.type) }}
+                <div class="d-flex justify-content-between" style="margin-top: 15px">
+                    <div class="mb-3">
+                        {{ form.img(class="form-control", type="file", id="formFile") }}
+                    </div>
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+{{ ckeditor.load(pkg_type="basic") }}
+{{ ckeditor.config(name='content') }}
+{% endblock %}

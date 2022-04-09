@@ -1,0 +1,42 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="container-fluid px-4">
+    <div class="card mb-4" style="margin-top: 50px">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Wszyscy administratorzy strony:
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>E-mail</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>E-mail</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for user in user %}
+                        <tr>
+                            <td>{{ user.firstname }}</td>
+                            <td>{{ user.lastname }}</td>
+                            <td>{{ user.mail }}</td>
+                            <td><a href="{{ url_for('admin_delete_user', id=user.id)}}">Usuń</a></td>
+                        </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
