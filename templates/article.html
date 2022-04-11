@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+<link rel="stylesheet" href="/static/styles/article.css">
+<div class="article-cover" style="background-image: url(/static/img/articles/{{ article.img }});"></div>
 <div class="article-content">
-    <h2>{{ article.name }}</h2>
-    <h4>{{ article.subtitle }}</h4>
+    <h3>{{ article.name }}</h3>
+    <h6>{{ article.subtitle }}</h6>
     {{ article.content|safe }}
 </div>
 {% endblock %}

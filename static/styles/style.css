@@ -53,6 +53,8 @@ p{font-size: 20px;}
 
 a{text-decoration: none;}
 
+strong{font-weight: 800;}
+
 /* My global elements */
 .menu{
   width: 100%;
@@ -160,6 +162,7 @@ a{text-decoration: none;}
 }
 .button.primary[type="submit"]{
   background: var(--second-accent);
+  color: #fafafa;
 }
 
 .text-input{

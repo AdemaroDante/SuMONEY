@@ -37,12 +37,3 @@ class Users(db.Model, UserMixin):
 
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
-
-class Messages(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    sender = db.Column(db.String(50), nullable = False)
-    sender_mail = db.Column(db.String(80), nullable = False)
-    recipient = db.Column(db.String(50), nullable = False)
-    subject = db.Column(db.String(50), nullable = True)
-    content = db.Column(db.String(50), nullable = True)
-    date = db.Column(db.DateTime, default=datetime.datetime.now())

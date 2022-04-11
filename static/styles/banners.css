@@ -1,7 +1,6 @@
 .articles-container{
     width: 100%;
-    max-width: 1100px;
-    min-width: 400px;
+    min-width: 1100px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

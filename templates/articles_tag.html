@@ -7,7 +7,7 @@
     {% if article %}
         {% for article in article %}
                 <a href="{{ url_for('article', article_name=article.name )}}">
-                    <div class="big-banner banner " style="background-image: url(/static/img/articles/{{ article.id }}.jpg)">
+                    <div class="big-banner banner " style="background-image: url(/static/img/articles/{{ article.img }})">
                         <div class="bg-lin-shd">
                         <h6>{{ article.name }}</h6>
                         <h7>{{ article.subtitle }}</h7>

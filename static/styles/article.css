@@ -1,0 +1,55 @@
+.article-cover{
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-attachment: fixed;
+}
+.article-content{
+    margin-top: 300px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    min-width: 900px;
+}
+.article-content>h3{
+    font-size: 60px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--second-accent);
+}
+.article-content>h6{
+    font-size: 40px;
+    font-weight: 300;
+    margin-bottom: 50px;
+}
+.article-content>p>strong{
+    font-size: 20px;
+}
+.article-content>ul>li{
+    font-size: 20px;
+}
+.article-content>ul{
+    list-style: none;
+}
+.article-content>ul>li::before {
+    content: "\2609";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: var(--second-accent); /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+.article-content>p,
+.article-content>ul,
+.article-content>p>a{
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.article-content>p>a{
+    color: #538fff;
+}
+.article-content>p>a:hover{
+    text-decoration: underline;
+}
