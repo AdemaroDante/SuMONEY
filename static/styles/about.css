@@ -1,0 +1,57 @@
+.people-element{
+    width: 100%;
+    height: 90vh;
+    min-height: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--second-bg);
+}
+.people-element>.people-bar{
+    width: 200px;
+    height: 80%;
+    min-height: 300px;
+    overflow: hidden;
+    margin: 10px;
+    box-sizing: border-box;
+
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center;
+    background-size: cover;
+
+    transition: 0.5s ease;
+    cursor: default;
+
+}
+.people-element>.people-bar>.bg-lin-shd{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 40px;
+    box-sizing: border-box;
+    background: none;
+    transition: .3s;
+}
+.people-element>.people-bar>.bg-lin-shd>h4,
+.people-element>.people-bar>.bg-lin-shd>p{
+    opacity: 0;
+    width: 440px;
+    transition: .5s all;
+    transition-delay: .2s;
+    color: #fff;
+}
+/* After hover */
+.people-element>.people-bar:hover{
+    width: 500px;
+}
+.people-element>.people-bar:hover>.bg-lin-shd{
+    background: linear-gradient(#00000000, #000000aa );
+}
+.people-element>.people-bar:hover>.bg-lin-shd>h4,
+.people-element>.people-bar:hover>.bg-lin-shd>p{
+    opacity: 1;
+}

@@ -15,11 +15,11 @@ h5{
 }
 .articles-container{
     flex-direction: column-reverse;
+    padding-top: 100px;
 }
 h5>i{
     font-size: 50px;
     background: var(--primary-accent);
     color: #fafafa;
     padding: 10px;
-    border-radius: 5px;
 }

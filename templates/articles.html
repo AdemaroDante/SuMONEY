@@ -22,18 +22,20 @@
         <div class="button small primary">Ciekawostki</div>
     </a>
 </div>
-<div class="articles-container" style="margin: 100px 0 100px 0;">
-    {% if article %}
-        {% for article in article %}
-                <a href="{{ url_for('article', article_name=article.name )}}">
-                    <div class="big-banner banner " style="background-image: url(/static/img/articles/{{ article.img }})">
-                        <div class="bg-lin-shd">
-                        <h6>{{ article.name }}</h6>
-                        <h7>{{ article.subtitle }}</h7>
-                        </div>
-                        <div class="highlight"></div>
-                    </div>
-                </a>
+<div class="articles-container">
+    {% if art %}
+        {% for art in art %}
+
+            <a href="{{ url_for('article', article_name=art.name )}}">
+            <div class="banner" style="background-image: url(static/img/articles/{{  art.img }})">
+                <div class="bg-lin-shd">
+                <h6>{{ art.name }}</h6>
+                <h7>{{ art.subtitle }}</h7>
+                </div>
+                <div class="highlight"></div>
+            </div>
+            </a>
+
         {% endfor %}
     {% else %}
         <h6> Brak artykułów do wyświetlenia..! </h6>

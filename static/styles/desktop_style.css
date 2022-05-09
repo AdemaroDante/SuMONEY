@@ -1,0 +1,7 @@
+body{
+    width: 100vw;
+    min-width: 1000px;
+}
+.menu{
+    background: rgb(38, 0, 255);
+}

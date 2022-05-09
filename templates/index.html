@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block head %}
-<div id="head" class="head" style="background-image: url(static/img/head.jpg);">
+<div id="head" class="head" style="background-image: url(static/img/head.png);">
   <div class="bg-lin-shd">
     <div class="titles">
       <h1>SkuMONEY</h1>
@@ -14,81 +14,29 @@
 {% block content %}
 <link rel="stylesheet" href="static/styles/index.css" type="text/css">
 <link rel="stylesheet" href="static/styles/banners.css" type="text/css">
-<h5 class="reveal"> Najnowsze artykuły </h5>
-{% if latest > 0 %}
+{% if art %}
+<h5 class="reveal"> Najnowsze artykuły ⬇️ </h5>
   <div class="articles-container reveal">
+    {% for art in art %}
 
-    <a href="{{ url_for('article', article_name=banner.bg_ban1.name )}}">
-      <div class="big-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.bg_ban1.img }})">
-        <div class="bg-lin-shd">
-          <h6>{{ banner.bg_ban1.name }}</h6>
-          <h7>{{ banner.bg_ban1.subtitle }}</h7>
-        </div>
-        <div class="highlight"></div>
-      </div>
-    </a>
-
-    {% if latest > 1 %}
-      <a href="{{ url_for('article', article_name=banner.bg_ban2.name )}}">
-        <div class="big-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.bg_ban2.img }})">
+      <a href="{{ url_for('article', article_name=art.name )}}">
+        <div class="banner" style="background-image: url(static/img/articles/{{  art.img }})">
           <div class="bg-lin-shd">
-            <h6>{{ banner.bg_ban2.name }}</h6>
-            <h7>{{ banner.bg_ban2.subtitle }}</h7>
+            <h6>{{ art.name }}</h6>
+            <h7>{{ art.subtitle }}</h7>
           </div>
           <div class="highlight"></div>
         </div>
       </a>
-    {% endif %}
-    
-    {% if latest > 2 %}
-      <a href="{{ url_for('article', article_name='tem') }}">
-        <div class="small-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.sm_ban3.img }})">
-          <div class="bg-lin-shd">
-            <h6>{{ banner.sm_ban3.name }}</h6>
-          </div>
-          <div class="highlight"></div>
-        </div>
-      </a>
-    {% endif %}
 
-    {% if latest > 3 %}
-    <a href="{{ url_for('article', article_name='tem') }}">
-      <div class="small-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.sm_ban4.img }})">
-        <div class="bg-lin-shd">
-          <h6>{{ banner.sm_ban4.name }}</h6>
-        </div>
-        <div class="highlight"></div>
-      </div>
-    </a>
-    {% endif %}
-
-    {% if latest > 4 %}
-    <a href="{{ url_for('article', article_name='tem') }}">
-      <div class="small-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.sm_ban5.img }})">
-        <div class="bg-lin-shd">
-          <h6>{{ banner.sm_ban5.name }}</h6>
-        </div>
-        <div class="highlight"></div>
-      </div>
-    </a>
-    {% endif %}
-
-    {% if latest > 5 %}
-    <a href="{{ url_for('article', article_name='tem') }}">
-      <div class="small-banner banner reveal" style="background-image: url(static/img/articles/{{ banner.sm_ban6.img }})">
-        <div class="bg-lin-shd">
-          <h6>{{ banner.sm_ban6.name }}</h6>
-        </div>
-        <div class="highlight"></div>
-      </div>
-    </a>
-    {% endif %}
-
+    {% endfor %}
   </div>
-
   <a href="{{ url_for('articles') }}">
     <div class="button primary big">Więcej artykułów</div>
   </a>
+{% else %}
+  <h5 class="reveal">Żadne artykuły nie zostały jeszcze dodane</h5>
 {% endif %}
+<script src="https://skrypt-cookies.pl/id/a21041d15df7e3b4.js"></script>
 
 {% endblock %}

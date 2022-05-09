@@ -1,71 +1,40 @@
 .articles-container{
     width: 100%;
-    min-width: 1100px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 15px 10px;
 }
-
-.articles-container>a>.big-banner{
-    width: 1100px;
-    min-width: 400px;
+.banner{
     height: 300px;
-    display: list-item;
-    border-radius: 5px 5px 0 0;
+    background-repeat: no-repeat;
     background-position: center;
-    background-repeat: no-repeat; 
     background-size: cover;
-    margin: 20px;
-    transition: all .5s;
 }
-*{
-    list-style-type: none;
-}
-.articles-container>a>.small-banner{
-    width: 530px;
-    height: 300px;
-    display: list-item;
-    border-radius: 5px;
-    background-position: center;
-    background-repeat: no-repeat; 
-    background-size: cover;
-    margin: 20px 10px 20px 10px;
-    transition: all .5s;
-}
-.articles-container>a>.big-banner,
-.articles-container>a>.small-banner{
-    box-shadow: 0 0 20px 5px #00000064;
-}
-.articles-container>a>.big-banner>.highlight,
-.articles-container>a>.small-banner>.highlight{
-    width: 100%;
-    height: 10px;
-    background: var(--second-accent);
-    border-radius: 0 0 5px 5px;
-    transition: 0.3s;
-}
-.articles-container>a>.big-banner>.bg-lin-shd,
-.articles-container>a>.small-banner>.bg-lin-shd{
+.banner>.bg-lin-shd{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: end;
-    padding: 20px 30px 20px 30px;
+    justify-content: flex-end;
+    padding: 30px;
     box-sizing: border-box;
+    transition: .5s;
 }
-.articles-container>a>.big-banner>.bg-lin-shd>h6,
-.articles-container>a>.small-banner>.bg-lin-shd>h6{
-    color: #fefefe;
-    transition: all .5s;
+.banner:hover>.bg-lin-shd{
+    background: #00000000;
 }
-.articles-container>a>.big-banner:hover,
-.articles-container>a>.small-banner:hover{
-    height: 400px;
+.banner>.bg-lin-shd>h6{
+    color: #fff;
+    font-weight: 700;
 }
-.articles-container>a>.big-banner>.bg-lin-shd>h7{
-    color: #fefefe;
-    font-weight: 300;
-    transition: all .5s;
+.banner>.bg-lin-shd>h7{
+    color: #bbb;
+}
+.banner>.highlight{
+    height: 5px;
+    width: 0;
+    background: var(--second-accent);
+    transition: .5s;
+}
+.banner:hover>.highlight{
+    width: 100%;
 }

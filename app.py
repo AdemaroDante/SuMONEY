@@ -37,31 +37,19 @@ ckeditor = CKEditor(app)
 # Main page 
 @app.route('/', methods=['GET'])
 def home():
-    articles = Articles.query.all()
-    latest = 0
-    for articles in articles:
-        latest += 1
+    art = Articles.query.order_by(Articles.id.desc()).limit(6).all()
+    return render_template('index.html', art=art)
 
-    class banner():
-        bg_ban1 = Articles.query.get(latest)
-        bg_ban2 = Articles.query.get(latest-1)
-        sm_ban3 = Articles.query.get(latest-2)
-        sm_ban4 = Articles.query.get(latest-3)
-        sm_ban5 = Articles.query.get(latest-4)
-        sm_ban6 = Articles.query.get(latest-5)
-
-    return render_template('index.html', banner = banner, latest = latest)
-
-# List of articles
+# List of articlesexit
 @app.route('/artykuły', methods=['GET', 'POST'])
 def articles():
     form = SearchArticle()
-    article = Articles.query.all()
+    art = Articles.query.all()
     if form.validate_on_submit():
-        article = Articles.query.filter(Articles.name.like(f"%{form.name.data}%")).all()
+        art = Articles.query.filter(Articles.name.like(f"%{form.name.data}%")).all()
         if form.name.data == '':
-            article = Articles.query.all()
-    return render_template('articles.html', article=article, form=form)
+            art = Articles.query.all()
+    return render_template('articles.html', art=art, form=form)
 
 # List of articles with type
 @app.route('/artykuły/kategoria=<type>', methods=['GET', 'POST'])
@@ -130,7 +118,7 @@ def admin_articles():
 
 # Admin - add article
 @app.route('/admin/artykuły/dodaj', methods = ['GET', 'POST'])
-#@login_required
+@login_required
 def admin_add_article():
     form = AddArticle()
 
@@ -139,11 +127,14 @@ def admin_add_article():
         subtitle = form.subtitle.data
         type = form.type.data
         content = form.content.data
-        img = form.img.data
-        img_filename = secure_filename(img.filename)
-        img_name = str(uuid.uuid1()) + "_" + img_filename
-        img.save(os.path.join(app.config['UPLOAD_FOLDER'], img_name))
-        img = img_name
+        if form.img.data:
+            img = form.img.data
+            img_filename = secure_filename(img.filename)
+            img_name = str(uuid.uuid1()) + "_" + img_filename
+            img.save(os.path.join(app.config['UPLOAD_FOLDER'], img_name))
+            img = img_name
+        else:
+            img = '../default_article_image.jpg'
         added_by = str(f"{current_user.firstname} {current_user.lastname}")
 
         new_article = Articles(name=name, subtitle=subtitle, type=type, content=content, img=img, added_by=added_by, date=datetime.datetime.now())
