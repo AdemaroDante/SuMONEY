@@ -12,7 +12,6 @@ from werkzeug.utils import secure_filename
 import uuid as uuid
 import os
 import datetime
-
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
@@ -26,21 +25,20 @@ db_init(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+ckeditor = CKEditor(app)
 
 @login_manager.user_loader
 def load_user(user_id):
     return Users.query.get(int(user_id))
 
-ckeditor = CKEditor(app)
-
-# ---------- Views ----------
+# -------------------- Views -------------------- 
 # Main page 
 @app.route('/', methods=['GET'])
 def home():
     art = Articles.query.order_by(Articles.id.desc()).limit(6).all()
     return render_template('index.html', art=art)
 
-# List of articlesexit
+# All articles
 @app.route('/artykuły', methods=['GET', 'POST'])
 def articles():
     form = SearchArticle()
@@ -51,12 +49,16 @@ def articles():
             art = Articles.query.all()
     return render_template('articles.html', art=art, form=form)
 
-# List of articles with type
+# List of articles with some type
 @app.route('/artykuły/kategoria=<type>', methods=['GET', 'POST'])
 def type_articles(type):
+    form = SearchArticle()
     article = Articles.query.filter(Articles.type == type).all()
-
-    return render_template('articles_tag.html', article=article, type=type)
+    if form.validate_on_submit():
+        art = Articles.query.filter(Articles.name.like(f"%{form.name.data}%")).all()
+        if form.name.data == '':
+            art = Articles.query.all()
+    return render_template('articles.html', art=article, form=form)
 
 # Single article page
 @app.route('/artykuł/<article_name>', methods = ['GET', 'POST'])

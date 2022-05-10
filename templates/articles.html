@@ -9,6 +9,9 @@
     {{ form.submit(class="button small primary", value="Szukaj") }}
 </form>
 <div class="types-area">
+    <a href="{{ url_for('articles') }}">
+        <div class="button small primary">Wszystkie</div>
+    </a>
     <a href="{{ url_for('articles') }}/kategoria=Pieniądze w praktyce">
         <div class="button small primary">Pieniądze w praktyce</div>
     </a>
@@ -27,7 +30,7 @@
         {% for art in art %}
 
             <a href="{{ url_for('article', article_name=art.name )}}">
-            <div class="banner" style="background-image: url(static/img/articles/{{  art.img }})">
+            <div class="banner" style="background-image: url(/static/img/articles/{{  art.img }})">
                 <div class="bg-lin-shd">
                 <h6>{{ art.name }}</h6>
                 <h7>{{ art.subtitle }}</h7>

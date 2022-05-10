@@ -40,6 +40,7 @@ body, html{
   margin: 0;
   padding: 0;
   transition: all 0.1s ease;
+  overflow-x: hidden;
 }
 body{
   background: var(--primary-bg);
@@ -67,15 +68,29 @@ strong{font-weight: 800;}
   background: var(--second-bg);
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   align-items: center;
-  justify-content: space-between;
   padding: 0 80px 0 80px;
   box-sizing: border-box;
   box-shadow: var(--primary-shd);
   z-index: 5;
+  transition: 0.5s;
 }
-.menu>a>.logo{
+#men-swith{
+  display: none;
+}
+.menu>div{
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu>div>label{
+  display: none;
+}
+.menu>div>a>.logo{
   width: 300px;
   display: flex;
   flex-direction: row;
@@ -83,9 +98,9 @@ strong{font-weight: 800;}
   align-items: center;
   justify-content: flex-start;
 }
-.menu>a>.logo>img{margin-right: 20px;}
-.menu>a>.logo>.money{color: var(--second-accent);}
-.menu>.buttons{display: inline-flex;}
+.menu>div>a>.logo>img{margin-right: 20px;}
+.menu>div>a>.logo>.money{color: var(--second-accent);}
+.menu>.buttons{display: inline-flex; transition-delay: 0.5s;}
 .menu>.buttons>a{text-decoration: none;}
 .menu>.buttons>a>.option{
   height: 80px;
@@ -94,6 +109,7 @@ strong{font-weight: 800;}
   display: flex;
   align-items: center;
   font-size: 20px;
+  white-space: nowrap;
 }
 .menu>.buttons>a:hover>.option{
   background: var(--primary-hover);
@@ -122,7 +138,7 @@ strong{font-weight: 800;}
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 0px 200px 0 200px;
+  padding: 0px 20% 0 20%;
   box-sizing: border-box;
 }
 .bg-lin-shd{
@@ -185,7 +201,6 @@ strong{font-weight: 800;}
 
 footer{
   width: 100%;
-  height: 600px;
   background: var(--footer-col);
   padding: 60px 10% 60px 10%;
   box-sizing: border-box;
@@ -258,12 +273,13 @@ footer>.ft-cont>.block>a>i{
   display: none !important;
 
 }
-
+/*
 .reveal{
   transform: translateY(100px);
   opacity: 0;
   transition: .8s;
 }
+*/
 .active{
   transform: translateY(0);
   opacity: 1;

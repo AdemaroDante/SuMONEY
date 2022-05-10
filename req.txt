@@ -1,4 +1,8 @@
+virtualenv
 flask
-flask_ckeditor
-flask
-flask_sqlalchemy
+flask-ckeditor
+Flask-SQLAlchemy
+flask-login
+Flask-Migrate
+Flask-WTF
+Werkzeug
