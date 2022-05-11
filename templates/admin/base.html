@@ -65,10 +65,10 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="/admin/edytuj-treści/o-nas">
                                         <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group"></i></div>
                                         O nas</a>
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="/admin/edytuj-treści/stopka">
                                         <div class="sb-nav-link-icon"><i class="fa-solid fa-sheet-plastic"></i></div>
                                         Informacje w stopce
                                     </a>
@@ -109,7 +109,7 @@
                     {% if messages %}
                         {% for message in messages %}
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <strong>Holy guacamole!</strong>  {{ message }}
+                                ⚠️  {{ message }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         {% endfor %}

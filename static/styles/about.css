@@ -1,57 +1,124 @@
+.content{
+    padding-bottom: 30px;
+}
+.content>.about{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.content>.about>h3{
+    margin-top: 100px;
+}
+.content>.about>p{
+    margin-top: 50px;
+    font-weight: 100;
+    line-height: 30px;
+    text-align: justify;
+}
 .people-element{
     width: 100%;
-    height: 90vh;
-    min-height: 400px;
+    height: 700px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     background-color: var(--second-bg);
-}
-.people-element>.people-bar{
-    width: 200px;
-    height: 80%;
-    min-height: 300px;
-    overflow: hidden;
-    margin: 10px;
+    padding: 50px;
     box-sizing: border-box;
-
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center;
-    background-size: cover;
-
-    transition: 0.5s ease;
-    cursor: default;
-
 }
-.people-element>.people-bar>.bg-lin-shd{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;
-    padding: 40px;
-    box-sizing: border-box;
-    background: none;
-    transition: .3s;
+.people-element>input{
+    display: none;
 }
-.people-element>.people-bar>.bg-lin-shd>h4,
-.people-element>.people-bar>.bg-lin-shd>p{
-    opacity: 0;
-    width: 440px;
-    transition: .5s all;
-    transition-delay: .2s;
-    color: #fff;
+@media only screen and (min-width: 900px){
+    .people-element>label{
+        width: 100px;
+        height: 600px;
+        padding: 20px;
+        margin: 10px;
+        box-sizing: border-box;
+        background-position: center;
+        background-repeat: no-repeat; 
+        background-size: cover;
+        background-attachment: scroll;
+        background-color: var(--first-accent);
+        overflow: hidden;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+    .people-element>label>h3{
+        color: #fff;
+        font-size: 50px;
+        white-space: nowrap;
+        transform: rotateZ(90deg);
+        margin-top: 50px;
+        transition: 0.5s;
+    }
+    .people-element>label>p{
+        color: #fff;
+        opacity: 0;
+        transition: 0.5s;
+    }
+    .people-element>label:hover{
+        width: 110px;
+    }
+    .people-element>input:checked + label{
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    .people-element>input:checked + label>h3{
+        transform: rotateZ(0deg);
+        white-space: normal;
+    }
+    .people-element>input:checked + label>p{
+        opacity: 1;
+    }
 }
-/* After hover */
-.people-element>.people-bar:hover{
-    width: 500px;
-}
-.people-element>.people-bar:hover>.bg-lin-shd{
-    background: linear-gradient(#00000000, #000000aa );
-}
-.people-element>.people-bar:hover>.bg-lin-shd>h4,
-.people-element>.people-bar:hover>.bg-lin-shd>p{
-    opacity: 1;
+@media only screen and (max-width: 900px){
+    .people-element{
+        flex-direction: column;
+        height: auto;
+    }
+    .people-element>label{
+        width: 90vw;
+        height: 140px;
+        padding: 20px;
+        margin: 10px;
+        box-sizing: border-box;
+        background-position: center;
+        background-repeat: no-repeat; 
+        background-size: cover;
+        background-attachment: scroll;
+        background-color: var(--first-accent);
+        overflow: hidden;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+    .people-element>label>h3{
+        color: #fff;
+        font-size: 50px;
+        transition: 0.5s;
+    }
+    .people-element>label>p{
+        color: #fff;
+        opacity: 0;
+        transition: 0.5s;
+    }
+    .people-element>input:checked + label{
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    .people-element>input:checked + label>h3{
+        white-space: normal;
+    }
+    .people-element>input:checked + label>p{
+        opacity: 1;
+    }
 }

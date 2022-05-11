@@ -5,8 +5,8 @@ from flask_login import LoginManager, current_user, login_manager, login_require
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_wtf import FlaskForm
-from forms import AddArticle, LogIn, SearchArticle, SignIn
-from models import Articles, Users
+from forms import AddArticle, LogIn, SearchArticle, SignIn, EditMemberInfo
+from models import Articles, Users, Members
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
 import uuid as uuid
@@ -71,7 +71,8 @@ def article(article_name):
 # About page
 @app.route('/o-nas', methods=['GET'])
 def about():
-    return render_template('about.html')
+    member = Members.query.all()
+    return render_template('about.html', member=member)
 
 # Login page
 @app.route('/login', methods=['GET', 'POST'])
@@ -188,8 +189,19 @@ def admin_delete_article(id):
         flash("Nie można usunąć artykułu!")
         return redirect(url_for('admin_articles'))
 
+# Admin - edit /o-nas content
+@app.route('/admin/edytuj-treści/o-nas', methods=['GET', 'POST'])
+@login_required
+def edit_about():
+    flash('Ta funkcja nie jest jeszcze dostępna!')
+    return redirect(url_for('admin'))
 
-
+# Admin - edit /kontakt content
+@app.route('/admin/edytuj-treści/stopka', methods=['GET', 'POST'])
+@login_required
+def edit_footer():
+    flash('Ta funkcja nie jest jeszcze dostępna!')
+    return redirect(url_for('admin'))
 
 # Admin - users
 @app.route('/admin/users', methods = ['GET', 'POST'])

@@ -24,6 +24,13 @@
 .head>.bg-lin-shd>.titles>h7{
     color: #fff;
 }
+.head>.bg-lin-shd>.titles>h7>a{
+    color: #fff;
+    font-size: 30px;
+}
+.head>.bg-lin-shd>.titles>h7>a:hover{
+    text-decoration: underline;
+}
 h5{
     margin: 120px 0 120px 0;
     text-align: center;

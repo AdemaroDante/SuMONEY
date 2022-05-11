@@ -26,6 +26,11 @@ class AddArticle(FlaskForm):
     img = FileField('')
     submit = SubmitField('Dodaj')
 
+class EditMemberInfo(FlaskForm):
+    name = StringField(validators=[DataRequired()])
+    description = StringField()
+    img = FileField()
+
 class SearchArticle(FlaskForm):
     name = StringField("Szukaj po tytule artykułu...")
     submit = SubmitField()
