@@ -17,7 +17,7 @@ from wtforms.validators import DataRequired
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "SkuMONEY"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///static/database/main.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/main.sqlite3'
 UPLOAD_FOLDER = 'static/img/articles'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 migrate = Migrate(app, db)

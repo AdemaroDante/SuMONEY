@@ -40,6 +40,7 @@ body, html{
   margin: 0;
   padding: 0;
   transition: all 0.1s ease;
+  overflow: visible;
   overflow-x: hidden;
 }
 body{
@@ -61,10 +62,8 @@ strong{font-weight: 800;}
 
 /* My global elements */
 .menu{
-  width: 100%;
+  width: 100vw;
   height: 80px;
-  position: sticky;
-  top: 0;
   background: var(--second-bg);
   display: flex;
   flex-direction: row;

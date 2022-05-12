@@ -1,7 +1,10 @@
 .types-area{
-    display: inline-flex;
-    justify-content: center;
+    display: flex;
     flex-wrap: wrap;
+    width: 100%;
+}
+.types-area>a{
+    flex: 1 1 150px;
     width: 100%;
 }
 form{
