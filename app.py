@@ -74,6 +74,12 @@ def about():
     member = Members.query.all()
     return render_template('about.html', member=member)
 
+# Contact page
+@app.route('/kontakt', methods=['GET'])
+def contact():
+    return render_template('contact.html')
+            
+
 # Login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
