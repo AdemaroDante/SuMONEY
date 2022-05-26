@@ -12,6 +12,7 @@ from werkzeug.utils import secure_filename
 import uuid as uuid
 import os
 import datetime
+import json
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
@@ -35,8 +36,10 @@ def load_user(user_id):
 # Main page 
 @app.route('/', methods=['GET'])
 def home():
+    Des = json.load(open('database/data.json', 'r'))
+    Des = Des["MainDescription"]
     art = Articles.query.order_by(Articles.id.desc()).limit(6).all()
-    return render_template('index.html', art=art)
+    return render_template('index.html', art=art, des=Des)
 
 # All articles
 @app.route('/artykuły', methods=['GET', 'POST'])
@@ -72,7 +75,9 @@ def article(article_name):
 @app.route('/o-nas', methods=['GET'])
 def about():
     member = Members.query.all()
-    return render_template('about.html', member=member)
+    aboutDescription = json.load(open('database/data.json', 'r'))
+    aboutDescription = aboutDescription["AboutText"]
+    return render_template('about.html', member=member, aboutDescription=aboutDescription)
 
 # Contact page
 @app.route('/kontakt', methods=['GET'])
