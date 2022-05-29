@@ -18,7 +18,7 @@
                     <span class="input-group-text" id="basic-addon1">Podtytuł</span>
                     {{ form.subtitle(type="text", class="form-control", placeholder="Podtytuł", value=editing_article.subtitle) }}
                 </div>
-                {{ form.content() }}
+                {{ form.content(style='resize: both; overflow: auto;') }}
                 {{ form.type(class="form-select", style="margin-top: 15px", value=editing_article.type) }}
                 <div class="d-flex justify-content-between" style="margin-top: 15px">
                     <div class="mb-3">

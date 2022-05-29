@@ -241,10 +241,7 @@ footer>.ft-bott>a{
 footer>.ft-cont>.block>a:hover,
 footer>a>h5:hover,
 footer>.ft-bott>a:hover{
-  color: #fff;
-  text-decoration: underline;
-  -webkit-text-decoration-color: var(--second-accent); /* Safari */  
-  text-decoration-color: var(--second-accent);
+  color: var(--second-accent);
 }
 footer>.ft-cont>.block>a>text{
   text-align: center;

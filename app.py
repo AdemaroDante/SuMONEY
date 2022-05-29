@@ -36,7 +36,7 @@ def load_user(user_id):
 # Main page 
 @app.route('/', methods=['GET'])
 def home():
-    Des = json.load(open('database/data.json', 'r'))
+    Des = json.load(open('database/data.json', 'r', encoding='utf-8'))
     Des = Des["MainDescription"]
     art = Articles.query.order_by(Articles.id.desc()).limit(6).all()
     return render_template('index.html', art=art, des=Des)
@@ -75,8 +75,10 @@ def article(article_name):
 @app.route('/o-nas', methods=['GET'])
 def about():
     member = Members.query.all()
-    aboutDescription = json.load(open('database/data.json', 'r'))
+    f = open('database/data.json', 'r', encoding='utf8')
+    aboutDescription = json.load(f)
     aboutDescription = aboutDescription["AboutText"]
+    print(aboutDescription)
     return render_template('about.html', member=member, aboutDescription=aboutDescription)
 
 # Contact page
