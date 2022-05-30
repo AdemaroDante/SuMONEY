@@ -45,11 +45,11 @@ def home():
 @app.route('/artykuły', methods=['GET', 'POST'])
 def articles():
     form = SearchArticle()
-    art = Articles.query.all()
+    art = Articles.query.order_by(Articles.id.desc()).all()
     if form.validate_on_submit():
         art = Articles.query.filter(Articles.name.like(f"%{form.name.data}%")).all()
         if form.name.data == '':
-            art = Articles.query.all()
+            art = Articles.query.order_by(Articles.id.desc()).all()
     return render_template('articles.html', art=art, form=form)
 
 # List of articles with some type

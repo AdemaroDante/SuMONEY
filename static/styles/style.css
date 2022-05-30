@@ -41,11 +41,11 @@ body, html{
   padding: 0;
   transition: all 0.1s ease;
   overflow: visible;
-  overflow-x: hidden;
 }
 body{
   background: var(--primary-bg);
 }
+
 h1{font-size: 180px;}
 h2{font-size: 100px;}
 h3{font-size: 80px;}
@@ -75,6 +75,9 @@ strong{font-weight: 800;}
   box-shadow: var(--primary-shd);
   z-index: 5;
   transition: 0.5s;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
 }
 #men-swith{
   display: none;

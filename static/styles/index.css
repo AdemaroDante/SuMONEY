@@ -7,8 +7,13 @@
     margin: 0;
 }
 .head>.bg-lin-shd>.titles{
-    width: 940px;
+    max-width: 940px;
     margin: 80px;
+}
+@media only screen and (max-width: 400px) {
+    .head>.bg-lin-shd>.titles>h7{
+        font-size: 20px;
+    }
 }
 .head>.bg-lin-shd{
     display: flex;

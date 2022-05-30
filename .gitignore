@@ -3,3 +3,4 @@ __pycache__/
 static/database/main.sqlite3
 static/img/articles/
 static/img/members/
+migrations/
