@@ -11,7 +11,7 @@
     margin-top: 300px;
     padding-top: 30px;
     padding-bottom: 50px;
-    min-width: 100px;
+    width: 100%;
 }
 .article-content>h3{
     font-size: 60px;

@@ -14,6 +14,9 @@
     .head>.bg-lin-shd>.titles>h7{
         font-size: 20px;
     }
+    .head>.bg-lin-shd>.titles{
+        margin: 20px;
+    }
 }
 .head>.bg-lin-shd{
     display: flex;
